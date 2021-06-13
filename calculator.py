@@ -394,6 +394,8 @@ def sqrt_x():
 root = Tk()
 # Setting main window's title.
 root.title('Calculator')
+# Don't allow resizes.
+root.resizable(False, False)
 
 # The output field that will display numbers.
 result = Entry(root, width=50, borderwidth=5, justify='right')
