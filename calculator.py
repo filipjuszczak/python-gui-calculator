@@ -1,5 +1,5 @@
 """
-A very simple GUI calculator using Tkinker.
+A standard GUI calculator using Tkinker.
 
 The calculator features:
     - addition
