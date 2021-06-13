@@ -11,6 +11,7 @@ The calculator features:
     - 1 over number -> 1/3 = 0.(3)
     - percentages
     - memory
+    - history
 """
 
 # Required import.
