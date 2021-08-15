@@ -14,11 +14,9 @@ The calculator features:
     - history
 """
 
-# Required import.
 from tkinter import *
 import math
 
-# Global variables.
 number = None
 symbol = None
 memory = None
@@ -30,10 +28,8 @@ def positive_negative():
     :return: None
     """
 
-    # If the first character of output is not a "-", put it there.
     if result.get()[0] != '-':
         result.insert(0, '-')
-    # Otherwise delete it.
     else:
         current = result.get()[1:]
         result.delete(0, END)
@@ -46,7 +42,6 @@ def comma():
     :return: None
     """
 
-    # If there is not a single "." in the number, put it there.
     if '.' not in result.get():
         current = result.get()
         result.delete(0, END)
@@ -127,17 +122,14 @@ def equals():
     global result
     global history_output
 
-    # If the second number was not input, print just the first one.
     if result.get() == '':
         result.insert(0, int(number))
 
-    # If the operation is addition.
     elif symbol == '+':
         read_number = float(result.get())
         answer = number + read_number
         result.delete(0, END)
 
-        # *
         if answer - int(answer) != 0:
             result.insert(0, str(answer))
         else:
@@ -150,16 +142,13 @@ def equals():
                                text=history_text)
         history_output.grid(row=1, column=5, padx=(0, 8), rowspan=7)
 
-        # **
         number = answer
 
-    # If the operation is subtraction.
     elif symbol == '-':
         read_number = float(result.get())
         answer = number - read_number
         result.delete(0, END)
 
-        # *
         if answer - int(answer) != 0:
             result.insert(0, str(answer))
         else:
@@ -172,16 +161,13 @@ def equals():
                                text=history_text)
         history_output.grid(row=1, column=5, padx=(0, 8), rowspan=7)
 
-        # **
         number = answer
 
-    # If the operation is multiplication.
     elif symbol == '*':
         read_number = float(result.get())
         answer = number * read_number
         result.delete(0, END)
 
-        # *
         if answer - int(answer) != 0:
             result.insert(0, str(answer))
         else:
@@ -194,10 +180,8 @@ def equals():
                                text=history_text)
         history_output.grid(row=1, column=5, padx=(0, 8), rowspan=7)
 
-        # **
         number = answer
 
-    # If the operation is division.
     elif symbol == '/':
         read_number = float(result.get())
         answer = number / read_number
@@ -216,7 +200,6 @@ def equals():
                                text=history_text)
         history_output.grid(row=1, column=5, padx=(0, 8), rowspan=7)
 
-        # **
         number = answer
 
 
@@ -390,28 +373,21 @@ def sqrt_x():
     result.insert(0, to_print)
 
 
-# The main window.
 root = Tk()
-# Setting main window's title.
 root.title('Calculator')
-# Don't allow resizes.
 root.resizable(False, False)
 
-# The output field that will display numbers.
 result = Entry(root, width=50, borderwidth=5, justify='right')
 result.grid(row=0, column=0, columnspan=5, padx=10, pady=10)
 
-# History label.
 history = Label(root, width=25, borderwidth=5, relief='groove', text='History')
 history.grid(row=0, column=5, padx=(0, 10))
 
-# The output field that will display calculator history.
 history_output = Label(root, width=25, height=25, borderwidth=5,
                        relief='groove',
                        text='')
 history_output.grid(row=1, column=5, padx=(0, 8), rowspan=7)
 
-# Creating all buttons.
 button_memory_clear = Button(root, text='MC', padx=33, pady=5,
                              command=memory_clear)
 button_memory_recall = Button(root, text='MR', padx=34, pady=5,
@@ -458,7 +434,6 @@ button_comma = Button(root, text=',', padx=42, pady=20, command=comma)
 button_multiply = Button(root, text='X', padx=40, pady=20, command=multiply)
 button_divide = Button(root, text='/', padx=42, pady=20, command=divide)
 
-# Placing buttons in the right positions.
 result.grid(row=0, column=0, columnspan=4)
 button_memory_clear.grid(row=1, column=0)
 button_memory_recall.grid(row=1, column=1)
@@ -489,5 +464,4 @@ button_subtraction.grid(row=5, column=3)
 button_addition.grid(row=6, column=3)
 button_equals.grid(row=7, column=3)
 
-# Starting the program
 root.mainloop()
